@@ -37,6 +37,12 @@
       appStates[app.id] = 'welcome';
     });
 
+    // Preload all app images into browser cache
+    PORTAL_CONFIG.apps.forEach(function(app) {
+      if (app.bgImage) { var i1 = new Image(); i1.src = app.bgImage; }
+      if (app.screenImage) { var i2 = new Image(); i2.src = app.screenImage; }
+    });
+
     renderSidebar();
     bindEvents();
 
