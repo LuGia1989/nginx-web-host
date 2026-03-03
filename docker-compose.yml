@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  portal:
+    build: .
+    container_name: ai-portal
+    ports:
+      - "8888:80"
+      # ── Uncomment for HTTPS ──
+      # - "443:443"
+    restart: unless-stopped
+    environment:
+      # ── Set your URLs here ──
+      #PORTAL_DOMAIN: "portal.example.com"
+      PORTAL_URL: "http://150.136.147.108:8888"
+      APP1_URL: "http://129.213.22.20:5005"
+      APP2_URL: "http://129.213.22.20:5050"
+      APP3_URL: "http://150.136.147.108:5070"
+      APP4_URL: "http://150.136.147.108:8000"
+    # ── Uncomment volumes for SSL certificates ──
+    # volumes:
+    #   - ./ssl/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+    #   - ./ssl/privkey.pem:/etc/nginx/ssl/privkey.pem:ro

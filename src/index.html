@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Command Center</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css?v=20260302">
+</head>
+<body>
+  <!-- Mobile hamburger -->
+  <button id="mobile-hamburger" class="mobile-hamburger" aria-label="Open menu">&#9776;</button>
+  <div id="mobile-overlay" class="mobile-overlay"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <img src="img/ampere.png" alt="Ampere" class="sidebar-logo">
+        <h1 id="portal-title" class="portal-title"></h1>
+      </div>
+      <p id="portal-subtitle" class="portal-subtitle"></p>
+    </div>
+    <nav id="nav-list" class="nav-list" role="tablist" aria-label="Applications"></nav>
+    <div class="sidebar-footer">
+      <button id="btn-collapse" class="btn-icon" title="Toggle sidebar" aria-label="Toggle sidebar">&#8249;</button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main id="content" class="content">
+    <!-- Loading overlay -->
+    <div id="loading" class="loading-overlay hidden">
+      <div id="loading-icon" class="loading-icon"></div>
+      <div class="spinner"></div>
+      <div id="loading-app-name" class="loading-app-name"></div>
+      <div id="loading-status" class="loading-status">Connecting...</div>
+      <div id="loading-timer" class="loading-timer">0s</div>
+      <div class="loading-progress"><div class="loading-progress-bar"></div></div>
+      <div id="loading-slow" class="loading-slow">
+        <p class="loading-slow-msg">The application is taking longer than usual to respond.<br>It may be starting up or temporarily unavailable.</p>
+        <div class="loading-actions">
+          <button id="loading-btn-retry" class="loading-btn loading-btn-retry">Retry</button>
+          <a id="loading-btn-newtab" class="loading-btn loading-btn-newtab" target="_blank" rel="noopener noreferrer">Open in New Tab</a>
+          <button id="loading-btn-cancel" class="loading-btn loading-btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Welcome page (built by JS) -->
+    <div id="welcome-container"></div>
+
+    <!-- Iframe container -->
+    <div id="iframe-container" class="iframe-container hidden"></div>
+  </main>
+
+  <script src="js/config.js?v=20260302"></script>
+  <script src="js/app.js?v=20260302"></script>
+</body>
+</html>
