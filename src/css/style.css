@@ -566,6 +566,57 @@ body.sidebar-collapsed {
   100% { left: 115%; opacity: 0; }
 }
 
+/* ── Typewriter animation ── */
+.screen-typewriter {
+  animation: screenPulse 4s ease-in-out infinite;
+}
+.screen-typewriter-bar {
+  position: absolute;
+  bottom: 14%;
+  left: 8%;
+  right: 8%;
+  height: 22px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--typewriter-color, #10b981);
+  box-shadow: 0 0 10px var(--typewriter-color, #10b981);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+.screen-typewriter-bar::before {
+  content: attr(data-text);
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--typewriter-color, #10b981);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typeExpand 4s steps(40, end) infinite;
+  letter-spacing: 0.05em;
+}
+.screen-typewriter-cursor {
+  width: 2px;
+  height: 13px;
+  background: var(--typewriter-color, #10b981);
+  box-shadow: 0 0 6px var(--typewriter-color, #10b981);
+  margin-left: 2px;
+  flex-shrink: 0;
+  animation: cursorBlink 0.7s step-end infinite;
+}
+@keyframes typeExpand {
+  0%   { width: 0; }
+  70%  { width: 100%; }
+  85%  { width: 100%; }
+  95%  { width: 0; }
+  100% { width: 0; }
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 /* -- Left: App Card -- */
 .welcome-card {
   display: flex;

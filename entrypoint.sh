@@ -10,6 +10,7 @@ sed -i "s|__APP1_URL__|${APP1_URL:-http://localhost:3000}|g" "$CONFIG"
 sed -i "s|__APP2_URL__|${APP2_URL:-http://localhost:8080}|g" "$CONFIG"
 sed -i "s|__APP3_URL__|${APP3_URL:-http://localhost:9090}|g" "$CONFIG"
 sed -i "s|__APP4_URL__|${APP4_URL:-http://localhost:7860}|g" "$CONFIG"
+sed -i "s|__APP5_URL__|${APP5_URL:-http://localhost:16969}|g" "$CONFIG"
 
 echo "Portal config updated:"
 grep '"url":' "$CONFIG"

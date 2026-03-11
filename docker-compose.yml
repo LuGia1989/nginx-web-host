@@ -1,4 +1,4 @@
-version: "3.8"
+#version: "3.8"
 services:
   portal:
     build: .
@@ -16,6 +16,7 @@ services:
       APP2_URL: "http://<app2-server>:5050"
       APP3_URL: "http://<app3-server>:5070"
       APP4_URL: "http://<app4-server>:8000"
+      APP5_URL: "http://<app5-server>:16969"
     # ── Uncomment volumes for SSL certificates ──
     # volumes:
     #   - ./ssl/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro

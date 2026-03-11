@@ -63,7 +63,7 @@
       item.dataset.appId = app.id;
       item.style.setProperty('--app-color', app.color);
       item.innerHTML = `
-        <span class="nav-icon">${app.icon}</span>
+        <span class="nav-icon">${app.logoImage ? `<img src="${app.logoImage}" alt="${app.name}" style="width:24px;height:24px;object-fit:contain;">` : app.icon}</span>
         <span class="nav-label">
           <span class="nav-name">${app.name}</span>
           <span class="nav-status">
@@ -142,7 +142,8 @@
         + '<div style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.5;pointer-events:none;">' + neuronBg + '</div>'
         + '<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">'
           + (app.screenImage
-            ? '<div class="screen-' + (app.screenAnim || 'float') + '" style="width:100%;max-width:420px;margin-bottom:20px;border-radius:12px;overflow:hidden;position:relative;border:1px solid ' + hexToRgba(app.color, 0.3) + ';box-shadow:0 8px 40px ' + hexToRgba(app.color, 0.15) + ',0 0 60px ' + hexToRgba(app.color, 0.08) + ';"><img src="' + app.screenImage + '" alt="' + app.name + '" style="width:100%;display:block;"/>' + (app.screenAnim === 'scan' ? '<div class="screen-scan-line" style="--scan-color:' + app.color + ';"></div>' : '') + (app.screenAnim === 'drive' ? '<div class="screen-drive-car" style="--drive-color:' + app.color + ';"></div><div class="screen-drive-trail" style="--drive-color:' + app.color + ';"></div>' : '') + (app.screenAnim === 'walk' ? '<div class="screen-walk-figure" style="--walk-color:' + app.color + ';"></div><div class="screen-walk-figure screen-walk-figure-2" style="--walk-color:' + app.color + ';"></div><div class="screen-walk-shadow" style="--walk-color:' + app.color + ';"></div>' : '') + '</div>'
+            ? '<div class="screen-' + (app.screenAnim || 'float') + '" style="width:100%;max-width:420px;margin-bottom:20px;border-radius:12px;overflow:hidden;position:relative;border:1px solid ' + hexToRgba(app.color, 0.3) + ';box-shadow:0 8px 40px ' + hexToRgba(app.color, 0.15) + ',0 0 60px ' + hexToRgba(app.color, 0.08) + ';"><img src="' + app.screenImage + '" alt="' + app.name + '" style="width:100%;display:block;"/>' + (app.screenAnim === 'scan' ? '<div class="screen-scan-line" style="--scan-color:' + app.color + ';"></div>' : '') + (app.screenAnim === 'drive' ? '<div class="screen-drive-car" style="--drive-color:' + app.color + ';"></div><div class="screen-drive-trail" style="--drive-color:' + app.color + ';"></div>' : '') + (app.screenAnim === 'walk' ? '<div class="screen-walk-figure" style="--walk-color:' + app.color + ';"></div><div class="screen-walk-figure screen-walk-figure-2" style="--walk-color:' + app.color + ';"></div><div class="screen-walk-shadow" style="--walk-color:' + app.color + ';"></div>' : '')
++ (app.screenAnim === 'typewriter' ? '<div class="screen-typewriter-bar" style="--typewriter-color:' + app.color + ';" data-text="&gt; Initializing multi-agent orchestration..."><div class="screen-typewriter-cursor" style="--typewriter-color:' + app.color + ';"></div></div>' : '') + '</div>'
             : '<div style="font-size:64px;margin-bottom:20px;">' + app.icon + '</div>')
           + '<div style="color:' + app.color + ';font-size:18px;font-weight:700;text-align:center;margin-bottom:20px;">' + app.name + '</div>'
           + '<button id="launch-btn" style="'
@@ -162,7 +163,7 @@
       + '">'
         + '<div style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.35;pointer-events:none;">' + neuronBg + '</div>'
         + '<div style="position:relative;z-index:1;">'
-          + '<div style="font-size:40px;margin-bottom:12px;">' + app.icon + '</div>'
+          + '<div style="font-size:40px;margin-bottom:12px;">' + (app.logoImage ? '<img src="' + app.logoImage + '" alt="' + app.name + '" style="height:40px;object-fit:contain;">' : app.icon) + '</div>'
           + '<h2 style="font-size:28px;font-weight:700;color:#e8edf5;margin-bottom:16px;">' + app.name + '</h2>'
           + '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">'
             + (app.tags || []).map(function(t) {
@@ -378,7 +379,7 @@
     const btnNewTab = document.getElementById('loading-btn-newtab');
     const btnCancel = document.getElementById('loading-btn-cancel');
 
-    icon.textContent = app.icon;
+    icon.innerHTML = app.logoImage ? '<img src="' + app.logoImage + '" alt="' + app.name + '" style="height:40px;object-fit:contain;">' : app.icon;
     name.textContent = app.name;
     status.textContent = 'Connecting...';
     timer.textContent = '0s';
